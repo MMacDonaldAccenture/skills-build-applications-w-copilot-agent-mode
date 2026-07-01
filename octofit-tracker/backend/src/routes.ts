@@ -8,27 +8,27 @@ import Workout from './models/Workout.js';
 
 const router = Router();
 
-router.get('/api/users', async (_req, res) => {
+router.get(['/api/users', '/api/users/'], async (_req, res) => {
   const users = await User.find({}).lean();
   res.json({ baseUrl: getApiBaseUrl(), data: users });
 });
 
-router.get('/api/teams', async (_req, res) => {
+router.get(['/api/teams', '/api/teams/'], async (_req, res) => {
   const teams = await Team.find({}).lean();
   res.json({ baseUrl: getApiBaseUrl(), data: teams });
 });
 
-router.get('/api/activities', async (_req, res) => {
+router.get(['/api/activities', '/api/activities/'], async (_req, res) => {
   const activities = await Activity.find({}).lean();
   res.json({ baseUrl: getApiBaseUrl(), data: activities });
 });
 
-router.get('/api/leaderboard', async (_req, res) => {
+router.get(['/api/leaderboard', '/api/leaderboard/'], async (_req, res) => {
   const leaderboard = await LeaderboardEntry.find({}).sort({ rank: 1 }).lean();
   res.json({ baseUrl: getApiBaseUrl(), data: leaderboard });
 });
 
-router.get('/api/workouts', async (_req, res) => {
+router.get(['/api/workouts', '/api/workouts/'], async (_req, res) => {
   const workouts = await Workout.find({}).lean();
   res.json({ baseUrl: getApiBaseUrl(), data: workouts });
 });

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import routes from './routes.js';
+import { connectToDatabase } from './config/database.js';
 
 const app = express();
 const port = Number(process.env.PORT || 8000);
@@ -14,10 +14,7 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', message: 'Octofit Tracker backend is running' });
 });
 
-const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/octofit_db';
-
-mongoose
-  .connect(mongoUri)
+connectToDatabase()
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(port, () => {
