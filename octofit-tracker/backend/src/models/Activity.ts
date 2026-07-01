@@ -6,6 +6,6 @@ const activitySchema = new Schema({
   durationMinutes: { type: Number, required: true },
   caloriesBurned: { type: Number, required: true },
   completedAt: { type: Date, default: Date.now },
-});
+}); 
 
 export default model('Activity', activitySchema);
