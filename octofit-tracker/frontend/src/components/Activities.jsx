@@ -9,7 +9,7 @@ const getApiBaseUrl = () => {
   return 'http://localhost:8000';
 };
 
-const buildApiUrl = (resource) => `${getApiBaseUrl()}/api/${resource}/`;
+const buildApiUrl = (resourcePath) => `${getApiBaseUrl()}${resourcePath}`;
 
 const extractItems = (payload) => {
   if (Array.isArray(payload)) {
@@ -47,7 +47,7 @@ export default function Activities() {
 
     const loadActivities = async () => {
       try {
-        const response = await fetch(buildApiUrl('activities'));
+        const response = await fetch(buildApiUrl('/api/activities/'));
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }
